@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>connectlive test page</title>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/@connectlive/connectlive-web-sdk/dist/connectlive-web-sdk.min.js"></script>
+  </head>
+
+  <body style="background-color: #f7e600" onload="onload()">
+        <script>
+            const roomId = 'voice-conference-sample',
+
+            connectButton = document.querySelector('#connectButton'),
+            disconnectButton = document.querySelector('#disconnectButton');
+
+            let connected = false,
+            localMedia,
+            room;
+
+            const onload = async() => {
+                console.log('호출 성공');
+                connectRoom();
+            }
+
+            const connectRoom = async () => {
+                console.log('connect')
+                connected = true;
+                // 1. 로그인
+                await ConnectLive.signIn({
+                    serviceId: 'L7GUGZJ3GFO2',
+                    serviceSecret: 'L7GUGZJ3GFO2VK10:uRh1hJ8NMJi7MHHd',
+                });
+                // 2. local media 얻기
+                localMedia = await ConnectLive.createLocalMedia({ audio: true });
+                // 3. room을 만들거나 특정 room에 접속하고 이벤트 처리하기
+                room = await ConnectLive.createRoom();
+                if (!room) {
+                    throw new Error('Failed to create room');
+                }
+
+                room.on('connected', (evt) => {
+                    evt.remoteParticipants.forEach(async (member) => {
+                    console.log('user: ' + member.id + ' is entered.');
+                    });
+                });
+
+                room.on('participantEntered', (evt) => {
+                    console.log('user: ' + evt.remoteParticipant.id + ' is entered.');
+                });
+
+                room.on('participantLeft', (evt) => {
+                    console.log('user: ' + evt.remoteParticipantId + ' is left.');
+                    disconnectRoom();
+                });
+                await room.connect(roomId);
+                // 4. 로컬미디어 송출하기
+                    room.publish([localMedia]); 
+            };
+
+            const disconnectRoom = async () => {
+                // 5. 자원 해제
+                if (!room || !localMedia) return;
+                room.disconnect();
+                localMedia.stop();
+                ConnectLive.signOut();
+                connected = false;
+                connectButton.innerHTML = 'Connect';
+                connectButton.disabled = connected;
+            };
+        </script>
+    </body>
+</html>
