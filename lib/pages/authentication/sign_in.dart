@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woozu/components/authentication/google_sign_in.dart';
+
 import 'package:woozu/const/color_const.dart';
+import 'package:woozu/pages/authentication/sign_in_with_email.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -30,53 +33,49 @@ class SignIn extends StatelessWidget {
                     color: white, fontSize: 45, fontWeight: FontWeight.w900),
               ),
               Spacer(),
-              Container(
-                width: double.infinity,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: white, borderRadius: BorderRadius.circular(20)),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                  child: Row(
-                    children: [
-                      Image.asset('assets/icon/google.png',
-                          width: 20, height: 20),
-                      Spacer(),
-                      Text(
-                        'Login With Google',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Spacer(),
-                      SizedBox(width: 20),
-                    ],
-                  ),
-                ),
-              ),
+              GoogleSignIn(),
               SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: white,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                child: Text(
-                  'Login With Email',
-                  style: TextStyle(
-                    color: blue,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
+              SignUpButton(),
               SizedBox(height: 16),
             ],
           ),
         ),
       )),
+    );
+  }
+}
+
+class SignUpButton extends StatelessWidget {
+  const SignUpButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (() {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EmailSignIn()),
+        );
+      }),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: secondary,
+              width: 2.0,
+            ),
+          ),
+        ),
+        child: Text(
+          'Login With Email',
+          style: TextStyle(
+            color: secondary,
+            fontSize: 10,
+          ),
+        ),
+      ),
     );
   }
 }

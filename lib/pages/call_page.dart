@@ -55,9 +55,7 @@ class _CallPageState extends State<CallPage> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: GestureDetector(
-                  onTap: () {
-                    print('a');
-                  },
+                  onTap: () {},
                   child: Container(
                     width: size.width * 0.95,
                     height: 40,
