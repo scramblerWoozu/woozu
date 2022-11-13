@@ -5,7 +5,6 @@ import 'package:woozu/pages/authentication/sign_in.dart';
 import 'package:woozu/pages/route_page.dart';
 import 'package:woozu/provider/category_setting.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +32,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        // home: Router(),
-        home: SignIn(),
+        home: Router(),
+        // home: SignIn(),
       ),
     );
   }
