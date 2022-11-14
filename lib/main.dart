@@ -10,11 +10,8 @@ import 'package:woozu/pages/authentication/sign_in.dart';
 import 'package:woozu/pages/loading/loading_page.dart';
 import 'package:woozu/pages/route_page.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-<<<<<<< HEAD
-=======
 import 'package:woozu/provider/user_service.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
->>>>>>> 925e30ba5de5f45a478c373cd36d56188a71268a
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -45,12 +42,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-<<<<<<< HEAD
-        home: Router(),
-        // home: SignIn(),
-=======
         home: user == null ? SignIn() : MyHomePage(),
->>>>>>> 925e30ba5de5f45a478c373cd36d56188a71268a
       ),
     );
   }
