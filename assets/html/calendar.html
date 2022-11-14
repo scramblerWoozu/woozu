@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Calendly inline widget begin -->
-    <div class="calendly-inline-widget" style="min-width:320px; height : 600px;" data-auto-load="false">
+    <div class="calendly-inline-widget" style="min-width:320px; height : 700px;" data-auto-load="false">
     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     <!-- Calendly inline widget end -->
 
@@ -23,18 +23,21 @@
 
         window.flutter_inappwebview.callHandler('lodingComplete', ...args).then(function(result){
             const calendly = result['calendar']
-            console.log(calendly)
             Calendly.initInlineWidget({
                 url: calendly+'?hide_event_type_details=1&hide_gdpr_banner=1?embed_domain=1',
-                // prefill: {
-                //     name: result['partnerName'],
-                //     email: result['email'],
-                // }
+                prefill: {
+                    name: result['userName'],
+                    email: result['userEmail'],
+                }
             });
-        });    
+        });
+
 
 
     });
+
+
+    
 
 </script>
 

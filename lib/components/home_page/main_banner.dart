@@ -16,7 +16,7 @@ class MainBanner1 extends StatefulWidget {
 class _MainBanner1State extends State<MainBanner1> {
   YoutubePlayerController _controller = YoutubePlayerController(
     initialVideoId:
-        YoutubePlayer.convertUrlToId("https://youtu.be/IRCdViYQUt8").toString(),
+        YoutubePlayer.convertUrlToId("https://youtu.be/CsVNaydxxuk").toString(),
     flags: YoutubePlayerFlags(
       autoPlay: true,
       hideControls: true,
@@ -56,7 +56,7 @@ class MainBanner2 extends StatefulWidget {
 class _MainBanner2State extends State<MainBanner2> {
   YoutubePlayerController _controller = YoutubePlayerController(
     initialVideoId:
-        YoutubePlayer.convertUrlToId("https://youtu.be/IRCdViYQUt8").toString(),
+        YoutubePlayer.convertUrlToId("https://youtu.be/CsVNaydxxuk").toString(),
     flags: YoutubePlayerFlags(
       autoPlay: false,
       hideControls: true,

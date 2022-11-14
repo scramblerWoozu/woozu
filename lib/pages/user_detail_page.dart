@@ -1,26 +1,56 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:woozu/components/appbar/main_appbar.dart';
 import 'package:woozu/const/color_const.dart';
+import 'package:woozu/model/user_model.dart';
 import 'package:woozu/pages/reserve_page.dart';
+import 'package:woozu/provider/user_service.dart';
 
 class UserDetailPage extends StatelessWidget {
-  UserDetailPage({super.key, required this.userData});
+  const UserDetailPage({
+    Key? key,
+    required this.partner,
+  }) : super(key: key);
 
-  final Map<String, dynamic> userData;
+  final Map<String, dynamic> partner;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    UserModel user = context.watch<UserService>().user;
+    print(user.email);
     return Scaffold(
+      appBar: MainAppBar(
+        appBar: AppBar(),
+        isLeading: true,
+      ),
       body: SafeArea(
         child: Stack(
           children: [
             Column(
               children: [
-                Image.asset(
-                  userData['profileImg'],
+                Container(
                   width: double.infinity,
                   height: size.height * 0.35,
-                  fit: BoxFit.cover,
+                  child: CachedNetworkImage(
+                    imageUrl: partner['profileImg'],
+                    imageBuilder: ((context, imageProvider) => Container(
+                          width: double.infinity,
+                          height: size.height * 0.35,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: imageProvider, fit: BoxFit.fitWidth)),
+                        )),
+                    placeholder: (context, url) => Container(
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 1.0,
+                        color: primary,
+                      ), // you can add pre loader iamge as well to show loading.
+                    ),
+                  ),
                 ),
                 SingleChildScrollView(
                   child: Padding(
@@ -34,55 +64,61 @@ class UserDetailPage extends StatelessWidget {
                             children: [
                               //title
                               Text(
-                                userData['title'],
+                                partner['title'],
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16),
                               ),
                               SizedBox(
                                 height: 32,
                               ),
-                              Row(
-                                children: [
-                                  //Name
-                                  Text(
-                                    userData['partnerName'],
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 20),
-                                  ),
-                                  Spacer(),
-                                  //job
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: primary,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(userData['job'],
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: black,
-                                          )),
-                                    ),
-                                  ),
-                                  SizedBox(width: 16),
-                                  //interest
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        color: primary,
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        userData['interest'],
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Container(
+                                  width: size.width,
+                                  child: Row(
+                                    children: [
+                                      //Name
+                                      Text(
+                                        partner['partnerName'],
                                         style: TextStyle(
-                                            fontSize: 12, color: black),
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 20),
                                       ),
-                                    ),
+                                      Spacer(),
+                                      //job
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: primary,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(partner['job'],
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: black,
+                                              )),
+                                        ),
+                                      ),
+                                      SizedBox(width: 16),
+                                      //interest
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: primary,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            partner['interest'],
+                                            style: TextStyle(
+                                                fontSize: 12, color: black),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                               SizedBox(
                                 height: 16,
@@ -100,7 +136,7 @@ class UserDetailPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8)),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
-                                  child: Text(userData['introduction']),
+                                  child: Text(partner['introduction']),
                                 ),
                               ),
 
@@ -129,8 +165,8 @@ class UserDetailPage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                ReservePage(partnerData: userData)));
+                            builder: (context) => ReservePage(
+                                partnerData: partner, userData: user)));
                   },
                   child: Container(
                     width: size.width * 0.98,
@@ -138,23 +174,14 @@ class UserDetailPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: black, borderRadius: BorderRadius.circular(10)),
                     child: Center(
-                        child: Text(
-                      'Reserve',
-                      style:
-                          TextStyle(color: white, fontWeight: FontWeight.bold),
-                    )),
+                      child: Text(
+                        'Reserve',
+                        style: TextStyle(
+                            color: white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            // backward arrow
-            IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.black,
               ),
             ),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/pages/user_detail_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({
@@ -17,7 +18,7 @@ class UserCard extends StatelessWidget {
         await Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => UserDetailPage(userData: partner)),
+              builder: (context) => UserDetailPage(partner: partner)),
         );
       },
       child: Container(
@@ -44,9 +45,22 @@ class UserCard extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 height: 140,
-                child: Image.asset(
-                  partner['profileImg'],
-                  fit: BoxFit.fill,
+                child: CachedNetworkImage(
+                  imageUrl: partner['profileImg'],
+                  imageBuilder: ((context, imageProvider) => Container(
+                        width: double.infinity,
+                        height: 140,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: imageProvider, fit: BoxFit.cover)),
+                      )),
+                  placeholder: (context, url) => Container(
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 1.0,
+                      color: primary,
+                    ), // you can add pre loader iamge as well to show loading.
+                  ),
                 ),
               ),
             ),
@@ -62,12 +76,12 @@ class UserCard extends StatelessWidget {
                           TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
                     ),
                     SizedBox(height: 4),
-                    Text('Job :' + partner['category'],
+                    Text('Job :' + partner['job'],
                         style: TextStyle(fontSize: 12)),
                     SizedBox(
                       height: 2,
                     ),
-                    Text('Interest : ' + partner['category'],
+                    Text('category : ' + partner['category'],
                         style: TextStyle(fontSize: 12)),
                     SizedBox(height: 2),
                     Spacer(),
