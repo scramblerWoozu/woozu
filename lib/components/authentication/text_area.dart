@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TextArea extends StatelessWidget {
-  const TextArea(
+ const TextArea(
       {Key? key,
       required TextEditingController controller,
       required this.icon,
-      required this.isObscure})
+      required this.isObscure,
+})
       : _controller = controller,
         super(key: key);
 
@@ -13,6 +14,7 @@ class TextArea extends StatelessWidget {
 
   final String icon;
   final bool isObscure;
+
 
   @override
   Widget build(BuildContext context) {

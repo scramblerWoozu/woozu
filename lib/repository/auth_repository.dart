@@ -126,6 +126,7 @@ class AuthRepository {
         showSnackBar(context, 'user not found');
         ;
       } else if (e.code == 'wrong-password') {
+        print(e.code);
         showSnackBar(context, 'wrong password');
       }
     }

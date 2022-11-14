@@ -139,7 +139,6 @@ class UserDetailPage extends StatelessWidget {
                                   child: Text(partner['introduction']),
                                 ),
                               ),
-
                               SizedBox(height: 16),
                             ],
                           ),

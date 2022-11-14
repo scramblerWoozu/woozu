@@ -4,34 +4,66 @@ import 'package:woozu/const/color_const.dart';
 import 'package:woozu/pages/authentication/sign_up.dart';
 import 'package:woozu/repository/auth_repository.dart';
 
-class EmailSignIn extends StatefulWidget {
-  const EmailSignIn({super.key});
+class SignInWithEmail extends StatefulWidget {
+  const SignInWithEmail({super.key});
 
   @override
-  State<EmailSignIn> createState() => _EmailSignInState();
+  State<SignInWithEmail> createState() => _EmailSignInState();
 }
 
-class _EmailSignInState extends State<EmailSignIn> {
+class _EmailSignInState extends State<SignInWithEmail> {
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _passwordConfirmController =
-      TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+
+
+  String email ='';
+  String password = '';
+
+  
+  @override
+  void initState() {
+    super.initState();
+    // myController에 리스너 추가
+    _emailController.addListener(setEmail);
+    _passwordController.addListener(setPassword);
+  }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _passwordConfirmController.dispose();
-    _usernameController.dispose();
     super.dispose();
   }
 
+
+  void setEmail() {
+    setState(() {
+      email = _emailController.text;
+    });
+  }
+
+  void setPassword() {
+    setState(() {
+      password = _passwordController.text;
+    });
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
+
+    return Scaffold(
+      backgroundColor: white,
+       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: white,
+        iconTheme: IconThemeData(color: black,),
+        ),
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 48, 16, 48),
           child: Stack(
             children: [
@@ -48,6 +80,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                           controller: _emailController,
                           icon: '',
                           isObscure: false,
+
                         ),
                       ),
                     ),
@@ -61,6 +94,7 @@ class _EmailSignInState extends State<EmailSignIn> {
                           controller: _passwordController,
                           icon: 'icon',
                           isObscure: true,
+   
                         ),
                       ),
                     ),
@@ -110,7 +144,7 @@ class _EmailSignInState extends State<EmailSignIn> {
   }
 }
 
-class SignInButton extends StatelessWidget {
+class SignInButton extends StatefulWidget {
   const SignInButton({
     Key? key,
     required this.context,
@@ -123,11 +157,16 @@ class SignInButton extends StatelessWidget {
   final String password;
 
   @override
+  State<SignInButton> createState() => _SignInButtonState();
+}
+
+class _SignInButtonState extends State<SignInButton> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
-        AuthRepository().signInWithEmail(context, email, password);
+        AuthRepository().signInWithEmail(context, widget.email, widget.password);
       },
       child: Container(
         width: double.infinity,

@@ -46,3 +46,6 @@ android/app/google-services.json
 android/app/proguard-rules.pro
 android/app/key.jks
 android/key.porperties
+
+
+**/ios/Runner/GoogleService-Info.plist

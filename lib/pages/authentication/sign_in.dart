@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:woozu/components/authentication/email_sign_in_button.dart';
 import 'package:woozu/components/authentication/google_sign_in.dart';
-
 import 'package:woozu/const/color_const.dart';
-import 'package:woozu/pages/authentication/sign_in_with_email.dart';
+
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -35,7 +35,7 @@ class SignIn extends StatelessWidget {
               Spacer(),
               GoogleSignIn(),
               SizedBox(height: 16),
-              SignUpButton(),
+              EmailSignInButton(),
               SizedBox(height: 16),
             ],
           ),
@@ -45,37 +45,5 @@ class SignIn extends StatelessWidget {
   }
 }
 
-class SignUpButton extends StatelessWidget {
-  const SignUpButton({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (() {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => EmailSignIn()),
-        );
-      }),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: secondary,
-              width: 2.0,
-            ),
-          ),
-        ),
-        child: Text(
-          'Login With Email',
-          style: TextStyle(
-            color: secondary,
-            fontSize: 10,
-          ),
-        ),
-      ),
-    );
-  }
-}
+

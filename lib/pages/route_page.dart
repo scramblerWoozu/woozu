@@ -31,6 +31,7 @@ class _RoutePageState extends State<RoutePage> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          elevation: 0,
           currentIndex: currentIndex, // 현재 보여주는 탭
           onTap: (newIndex) {
             setState(() {
