@@ -44,7 +44,7 @@ class UserCard extends StatelessWidget {
               ),
               child: Container(
                 width: double.infinity,
-                height: 140,
+                height: 160,
                 child: CachedNetworkImage(
                   imageUrl: partner['profileImg'],
                   imageBuilder: ((context, imageProvider) => Container(
@@ -66,8 +66,9 @@ class UserCard extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -83,8 +84,6 @@ class UserCard extends StatelessWidget {
                     ),
                     Text('category : ' + partner['category'],
                         style: TextStyle(fontSize: 12)),
-                    SizedBox(height: 2),
-                    Spacer(),
                     Divider(
                       color: secondary,
                     ),

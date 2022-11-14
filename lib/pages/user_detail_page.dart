@@ -141,11 +141,6 @@ class UserDetailPage extends StatelessWidget {
                               ),
 
                               SizedBox(height: 16),
-                              // Text(
-                              //   'Pronunciation',
-                              //   style: TextStyle(
-                              //       fontSize: 14, fontWeight: FontWeight.bold),
-                              // ),
                             ],
                           ),
                         )

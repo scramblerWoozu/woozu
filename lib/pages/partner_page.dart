@@ -59,7 +59,7 @@ class PartnerPage extends StatelessWidget {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 1 / 1.4,
+                          childAspectRatio: 1 / 1.5,
                           mainAxisSpacing: 24, //수평 Padding
                           crossAxisSpacing: 24, //수직 Padding
                         ),

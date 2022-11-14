@@ -39,10 +39,10 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8, 0, 8 ,0),
           child: SingleChildScrollView(
             child: Container(
-              height: size.height * 0.9,
+              height: size.height * 0.88,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

@@ -43,7 +43,7 @@ class PartnerArea extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 1 / 1.4,
+                    childAspectRatio: 1 / 1.6,
                     mainAxisSpacing: 24, //수평 Padding
                     crossAxisSpacing: 24, //수직 Padding
                   ),
