@@ -48,4 +48,7 @@ android/app/key.jks
 android/key.porperties
 
 
-**/ios/Runner/GoogleService-Info.plist
+ios/Podfile
+ios/Podfile.lock
+ios/Runner/GoogleService
+ios/Runner/GoogleService-Info.plist

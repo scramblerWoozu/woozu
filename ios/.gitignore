@@ -1,6 +1,8 @@
 **/podfile
 **/Podfile.lock
-**/ios/Runner/GoogleService-Info.plist
+Runner/GoogleService-Info.plist
+
+
 **/dgph
 *.mode1v3
 *.mode2v3
