@@ -50,7 +50,7 @@ android/key.porperties
 
 ios/Podfile
 ios/Podfile.lock
-ios/Runner/GoogleService
+ios/Runner/GoogleService-Info.plist
 # ios/Runner/GoogleService-Info.plistPodfile
 # Podfile.lock
 # GoogleService-Info.plist
