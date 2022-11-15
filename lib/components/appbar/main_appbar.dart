@@ -34,14 +34,22 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               // 잔여 쿠폰 수
               //티켓 아이콘
-              // Center(
-              //   child: Image.asset(
-              //     'assets/icon/ticket.png',
-              //     width: 25,
-              //     height: 25,
-              //     color: black,
-              //   ),
-              // ),
+              Column(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/icon/ticket.png',
+                      width: 28,
+                      height: 29,
+                      color: black,
+                    ),
+                  ),
+                  Text(
+                    'Ticket',
+                    style: TextStyle(color: black, fontSize: 11),
+                  )
+                ],
+              ),
             ],
           ),
         ),
