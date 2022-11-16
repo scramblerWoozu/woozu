@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:woozu/components/user_card/user_card.dart';
-import 'package:woozu/const/color_const.dart';
 import 'package:woozu/const/db_const.dart';
-import 'package:woozu/model/partner_data.dart';
 
 class PartnerArea extends StatelessWidget {
   const PartnerArea({

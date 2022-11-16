@@ -7,6 +7,7 @@ class UserModel {
   String interest;
   String introduction;
   String country;
+  int coupon;
 
   UserModel({
     required this.uid,
@@ -17,6 +18,7 @@ class UserModel {
     required this.interest,
     required this.introduction,
     required this.country,
+    required this.coupon,
   });
 
   Map<String, dynamic> toJson() => {
@@ -40,6 +42,7 @@ class UserModel {
       interest: userDoc['interest'] ?? '',
       introduction: userDoc['introduction'] ?? '',
       country: userDoc['country'] ?? '',
+      coupon: userDoc['coupon'] ?? 0,
     );
   }
 
@@ -53,6 +56,7 @@ class UserModel {
       interest: '',
       introduction: '',
       country: '',
+      coupon: 0,
     );
   }
 }

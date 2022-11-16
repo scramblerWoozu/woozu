@@ -7,14 +7,14 @@ import 'package:woozu/components/appbar/main_appbar.dart';
 import 'package:woozu/components/user_card/user_card.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/const/db_const.dart';
-import 'package:woozu/model/partner_data.dart';
+
 
 class PartnerPage extends StatelessWidget {
   const PartnerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> partnerInfo = user;
+
 
     final Stream<QuerySnapshot> partnerStream = partnerRef.snapshots();
     return Scaffold(

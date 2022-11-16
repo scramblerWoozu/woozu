@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/repository/auth_repository.dart';
+
+import '../../provider/user_service.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MainAppBar({
@@ -14,6 +17,8 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    int coupon = context.watch<UserService>().user.coupon;
+
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.white,
@@ -35,6 +40,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
               // 잔여 쿠폰 수
               //티켓 아이콘
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Center(
                     child: Image.asset(
@@ -49,6 +55,29 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                     style: TextStyle(color: black, fontSize: 11),
                   )
                 ],
+              ),
+              Positioned(
+                left: 15,
+                top: 3,
+                child: Container(
+                  width: 16,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: black),
+                    color: white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      coupon.toString(),
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),

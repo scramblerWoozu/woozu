@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:woozu/components/authentication/text_area.dart';
 import 'package:woozu/components/common/show_snack_bar.dart';
 import 'package:woozu/const/color_const.dart';
-import 'package:woozu/model/partner_data.dart';
 import 'package:woozu/repository/auth_repository.dart';
 
 class EmailSignUp extends StatefulWidget {

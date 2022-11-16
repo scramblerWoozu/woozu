@@ -52,6 +52,7 @@ dependencies:
   google_sign_in: ^5.4.2
   cached_network_image: ^3.2.2
   flutter_native_splash: ^2.2.14
+  accordion: ^2.5.1
 
 dev_dependencies:
   flutter_test:

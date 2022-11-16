@@ -8,6 +8,9 @@ Color blue = Color.fromARGB(255, 54, 74, 172);
 Color primary = Color(0xFFFFF4CB);
 Color warning = Color(0xFFF36161);
 
+//background
+Color backgroundPrimary = Color.fromARGB(255, 197, 183, 131);
+
 Color lightGrey = Color(0xFFF4F4F4);
 Color secondary = Color(0xFF8D8D8D);
 

@@ -4,6 +4,7 @@ import 'package:woozu/components/settings/button_custom.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/model/user_model.dart';
 import 'package:woozu/pages/settings/about_woozu.dart';
+import 'package:woozu/pages/settings/faq.dart';
 import 'package:woozu/pages/settings/privacy_police.dart';
 import 'package:woozu/pages/settings/profile_page.dart';
 import 'package:woozu/provider/user_service.dart';
@@ -69,6 +70,18 @@ class Settings extends StatelessWidget {
                   );
                 },
                 child: SettingsButton(title: 'Privacy policy'),
+              ),
+              SizedBox(height: 32),
+              GestureDetector(
+                onTap: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FAQ(),
+                    ),
+                  );
+                },
+                child: SettingsButton(title: 'FAQ'),
               ),
             ],
           ),
