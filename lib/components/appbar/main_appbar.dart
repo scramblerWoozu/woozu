@@ -57,7 +57,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
               Positioned(
-                left: 15,
+                left: 13,
                 top: 3,
                 child: Container(
                   width: 16,

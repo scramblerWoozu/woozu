@@ -27,6 +27,9 @@ class _RoutePageState extends State<RoutePage> {
           children: [
             HomePage(),
             PartnerPage(),
+            Center(
+              child: Text('Reservation'),
+            ),
             Settings(),
           ],
         ),
@@ -53,6 +56,9 @@ class _RoutePageState extends State<RoutePage> {
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/icon/user.png')),
                 label: "TALK"),
+            BottomNavigationBarItem(
+                icon: ImageIcon(AssetImage('assets/icon/category.png')),
+                label: "Reservation"),
             BottomNavigationBarItem(
                 icon: ImageIcon(AssetImage('assets/icon/category.png')),
                 label: "SETTINGS"),

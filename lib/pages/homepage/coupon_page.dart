@@ -11,6 +11,7 @@ class MyWidget extends StatelessWidget {
     return Scaffold(
       backgroundColor: primary,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('You can buy ticket only website'),
           Text('https://woozu.co'),
