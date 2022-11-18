@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:woozu/components/appbar/main_appbar.dart';
 import 'package:woozu/components/authentication/text_area.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/const/db_const.dart';
@@ -37,6 +38,8 @@ class _ProfilePageState extends State<ProfilePage> {
     UserModel user = context.watch<UserService>().user;
 
     return Scaffold(
+      backgroundColor: white,
+      appBar: MainAppBar(appBar: AppBar(), isLeading: true),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(8, 0, 8 ,0),

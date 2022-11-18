@@ -25,6 +25,7 @@ class FAQ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       appBar: MainAppBar(
         appBar: AppBar(),
         isLeading: true,
