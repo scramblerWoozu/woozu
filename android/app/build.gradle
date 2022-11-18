@@ -54,7 +54,7 @@ android {
         applicationId "com.scrambler.woozu"
         minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 2
+        versionCode 3
         versionName flutterVersionName
         multiDexEnabled true
     }
@@ -91,4 +91,5 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation "com.android.billingclient:billing:4.0.0"
 }
