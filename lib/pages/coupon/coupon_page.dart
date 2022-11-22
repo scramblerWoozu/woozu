@@ -13,7 +13,7 @@ class MyWidget extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('You can buy ticket only website'),
+          Text('Now, you can buy ticket only website'),
           Text('https://woozu.co'),
         ],
       ),

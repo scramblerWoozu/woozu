@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:woozu/components/appbar/coupon_icon.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/repository/auth_repository.dart';
 
@@ -33,55 +34,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : SizedBox(),
       actions: [
-        GestureDetector(
-          onTap: () {},
-          child: Stack(
-            children: [
-              // 잔여 쿠폰 수
-              //티켓 아이콘
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/icon/ticket.png',
-                      width: 28,
-                      height: 29,
-                      color: black,
-                    ),
-                  ),
-                  Text(
-                    'Ticket',
-                    style: TextStyle(color: black, fontSize: 11),
-                  )
-                ],
-              ),
-              Positioned(
-                left: 13,
-                top: 3,
-                child: Container(
-                  width: 16,
-                  height: 16,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: black),
-                    color: white,
-                  ),
-                  child: Center(
-                    child: Text(
-                      coupon.toString(),
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        CouponIcon(coupon: coupon),
         SizedBox(width: 16),
         GestureDetector(
           onTap: () {

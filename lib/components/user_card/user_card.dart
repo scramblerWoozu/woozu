@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:woozu/const/color_const.dart';
-import 'package:woozu/pages/user_detail_page.dart';
+import 'package:woozu/pages/detail_page/user_detail_page.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class UserCard extends StatelessWidget {
@@ -42,7 +42,7 @@ class UserCard extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 160,
                 child: CachedNetworkImage(

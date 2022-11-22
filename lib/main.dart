@@ -10,6 +10,7 @@ import 'package:woozu/pages/authentication/sign_in.dart';
 import 'package:woozu/pages/loading/loading_page.dart';
 import 'package:woozu/pages/route_page.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:woozu/provider/coupon_service.dart';
 import 'package:woozu/provider/user_service.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UserService()),
+        ChangeNotifierProvider(create: (context) => CouponService()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

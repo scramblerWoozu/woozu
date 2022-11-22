@@ -31,7 +31,6 @@ class FAQ extends StatelessWidget {
         isLeading: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Accordion(
             maxOpenSections: 1,

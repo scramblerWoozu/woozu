@@ -2,9 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:woozu/components/appbar/main_appbar.dart';
+import 'package:woozu/components/user_detail_page/bottom_button.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/model/user_model.dart';
-import 'package:woozu/pages/reserve_page.dart';
+import 'package:woozu/pages/detail_page/reserve_page.dart';
 import 'package:woozu/provider/user_service.dart';
 
 class UserDetailPage extends StatelessWidget {
@@ -31,7 +32,7 @@ class UserDetailPage extends StatelessWidget {
           children: [
             Column(
               children: [
-                Container(
+                SizedBox(
                   width: double.infinity,
                   height: size.height * 0.35,
                   child: CachedNetworkImage(
@@ -73,7 +74,7 @@ class UserDetailPage extends StatelessWidget {
                               ),
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
-                                child: Container(
+                                child: SizedBox(
                                   width: size.width,
                                   child: Row(
                                     children: [
@@ -150,34 +151,7 @@ class UserDetailPage extends StatelessWidget {
               ],
             ),
             //bottom button
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 16),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ReservePage(
-                                partnerData: partner, userData: user)));
-                  },
-                  child: Container(
-                    width: size.width * 0.98,
-                    height: 40,
-                    decoration: BoxDecoration(
-                        color: black, borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: Text(
-                        'Reserve',
-                        style: TextStyle(
-                            color: white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            BottomButton(partner: partner, user: user, size: size),
           ],
         ),
       ),

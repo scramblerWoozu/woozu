@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:woozu/const/color_const.dart';
-import 'package:woozu/pages/home_page.dart';
-import 'package:woozu/pages/partner_page.dart';
-import 'package:woozu/pages/settings.dart';
+import 'package:woozu/pages/main_page/home_page.dart';
+import 'package:woozu/pages/main_page/partner_page.dart';
+import 'package:woozu/pages/main_page/reservation_page.dart';
+import 'package:woozu/pages/main_page/settings.dart';
 
 class RoutePage extends StatefulWidget {
   const RoutePage({Key? key}) : super(key: key);
@@ -27,9 +28,7 @@ class _RoutePageState extends State<RoutePage> {
           children: [
             HomePage(),
             PartnerPage(),
-            Center(
-              child: Text('Reservation'),
-            ),
+            ReservationPage(),
             Settings(),
           ],
         ),
@@ -54,13 +53,13 @@ class _RoutePageState extends State<RoutePage> {
                 icon: ImageIcon(AssetImage('assets/icon/home.png')),
                 label: "HOME"),
             BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icon/user.png')),
+                icon: ImageIcon(AssetImage('assets/icon/users.png')),
                 label: "TALK"),
             BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icon/category.png')),
+                icon: ImageIcon(AssetImage('assets/icon/calendar.png')),
                 label: "Reservation"),
             BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage('assets/icon/category.png')),
+                icon: ImageIcon(AssetImage('assets/icon/settings.png')),
                 label: "SETTINGS"),
           ],
         ),
