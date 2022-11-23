@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:woozu/const/color_const.dart';
 import 'package:woozu/const/db_const.dart';
+import 'package:woozu/pages/coupon/coupon_page.dart';
 import 'package:woozu/provider/coupon_service.dart';
 import 'package:woozu/provider/user_service.dart';
 
@@ -49,7 +50,10 @@ class CouponIcon extends StatelessWidget {
           }
 
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CouponPage()));
+            },
             child: Stack(
               children: [
                 // 잔여 쿠폰 수
