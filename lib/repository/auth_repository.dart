@@ -10,7 +10,7 @@ import 'package:woozu/pages/authentication/sign_in.dart';
 
 class AuthRepository {
   //google sign in
-  Future<UserCredential> signInWithGoogle(BuildContext context) async {
+  void signInWithGoogle(BuildContext context) async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -30,29 +30,53 @@ class AuthRepository {
 
     //set user information in firebase
     if (authResult.additionalUserInfo!.isNewUser == true) {
-      userRef.doc(authResult.user!.uid + 'u').set({
-        "uid": authResult.user!.uid,
-        "isOnboarding": false,
-        'userName': authResult.additionalUserInfo!.profile!['name'],
-        'email': authResult.user!.email,
-        'isFirst': true,
-        'interest': 'not setting',
-        'country': authResult.additionalUserInfo!.profile!['locale'],
-        'introduction': 'not setting',
-        'coupon': 0
+      userRef
+          .where('email', isEqualTo: authResult.user!.email)
+          .get()
+          .then((value) {
+        if (value == null) {
+          userRef.doc('${authResult.user!.uid}u').set({
+            "uid": authResult.user!.uid,
+            "isOnboarding": false,
+            'userName': authResult.additionalUserInfo!.profile!['name'],
+            'email': authResult.user!.email,
+            'isFirst': true,
+            'interest': 'not setting',
+            'country': authResult.additionalUserInfo!.profile!['locale'],
+            'introduction': 'not setting',
+            'coupon': 0
+          }).then(
+            (value) => // navigate to homepage
+                Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+              (route) => false,
+            ),
+          );
+        } else {
+          for (var element in value.docs) {
+            userRef.doc(element.id).update({
+              'uid': authResult.user!.uid,
+              'isFirst': true,
+              'isOnboarding': false,
+              'country': authResult.additionalUserInfo!.profile!['locale']
+            }).then(
+              (value) =>
+                  // navigate to homepage
+                  Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => MyHomePage()),
+                (route) => false,
+              ),
+            );
+          }
+        }
       });
-    }
-
-    // navigate to homepage
-    if (authResult != null) {
+    } else {
+      // navigate to homepage
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => MyHomePage()),
         (route) => false,
       );
     }
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   // Email 회원가입 (Firebase)
@@ -70,7 +94,7 @@ class AuthRepository {
         showSnackBar(context, 'verificate eamil address');
 
         //가장 기본적인 user collection 생성 (email verificate 전)
-        userRef.doc(credential.user!.uid + 'u').set({
+        userRef.doc('${credential.user!.uid}u').set({
           "uid": credential.user!.uid,
           "isOnboarding": false,
           'userName': userName,
@@ -119,12 +143,10 @@ class AuthRepository {
           showSnackBar(context,
               'E-mail is not verificated, Check your email and do verificate');
         }
-        ;
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         showSnackBar(context, 'user not found');
-        ;
       } else if (e.code == 'wrong-password') {
         print(e.code);
         showSnackBar(context, 'wrong password');

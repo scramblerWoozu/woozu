@@ -78,12 +78,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: LoadingPage(),
               );
             } else {
-              snapshot.data!.docs.forEach((element) {
+              for (var element in snapshot.data!.docs) {
                 Map<String, dynamic> userRef =
                     element.data() as Map<String, dynamic>;
                 UserModel user = UserModel.fromDoc(userRef);
                 context.watch<UserService>().setUserState(user);
-              });
+              }
               return RoutePage();
             }
           },

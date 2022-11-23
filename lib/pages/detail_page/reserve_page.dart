@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:woozu/components/appbar/main_appbar.dart';
+import 'package:woozu/const/color_const.dart';
+import 'package:woozu/main.dart';
 import 'package:woozu/model/user_model.dart';
 
 class ReservePage extends StatefulWidget {
@@ -36,12 +37,24 @@ class _ReservePageState extends State<ReservePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.userData.email);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: MainAppBar(
-        appBar: AppBar(),
-        isLeading: true,
+      appBar: AppBar(
+        backgroundColor: white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: black),
+        leading: IconButton(
+          onPressed: () {
+            // navigate to homepage
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+              (route) => false,
+            );
+          },
+          iconSize: 17.0,
+          icon: Icon(Icons.arrow_back_ios),
+          color: black,
+        ),
       ),
       body: SafeArea(
         child: InAppWebView(
