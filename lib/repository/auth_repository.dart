@@ -34,7 +34,8 @@ class AuthRepository {
           .where('email', isEqualTo: authResult.user!.email)
           .get()
           .then((value) {
-        if (value == null) {
+        if (value.docs.isEmpty == true) {
+          print('a');
           userRef.doc('${authResult.user!.uid}u').set({
             "uid": authResult.user!.uid,
             "isOnboarding": false,
@@ -44,7 +45,6 @@ class AuthRepository {
             'interest': 'not setting',
             'country': authResult.additionalUserInfo!.profile!['locale'],
             'introduction': 'not setting',
-            'coupon': 0
           }).then(
             (value) => // navigate to homepage
                 Navigator.of(context).pushAndRemoveUntil(

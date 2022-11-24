@@ -36,16 +36,17 @@ class CouponIcon extends StatelessWidget {
         } else {
           int coupon = 0;
           if (snapshot.data!.docs.isNotEmpty) {
-            print('a');
             for (var element in snapshot.data!.docs) {
               Map<String, dynamic> couponData =
                   element.data() as Map<String, dynamic>;
-              int num = couponData['num'];
+
+              int num = couponData['num'].runtimeType == String
+                  ? int.parse(couponData['num'].split('.')[0])
+                  : couponData['num'];
               coupon += num;
               context.watch<CouponService>().setCouponState(coupon);
             }
           } else {
-            print('b');
             context.watch<CouponService>().setCouponState(0);
           }
 
